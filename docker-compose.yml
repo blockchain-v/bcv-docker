@@ -8,4 +8,26 @@ services:
     volumes:
       - ../bcv-backend/:/bcv-backend
     ports:
-      - "8080:8080"
+      - '8080:8080'
+    links:
+      - db
+
+  bcv-frontend:
+    container_name: bcv-frontend
+    build:
+      context: ../bcv-frontend
+    volumes:
+      - ../bcv-frontend/:/bcv-frontend
+    ports:
+      - '3000:3000'
+    depends_on:
+      - bcv-backend
+
+  db:
+    container_name: bcv-db
+    image: mongo
+    ports:
+      - '27017:27017'
+
+networks:
+  blockchain-v:
