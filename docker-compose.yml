@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  bcv-backend:
+    container_name: bcv-backend
+    build:
+      context: ../bcv-backend
+    volumes:
+      - ../bcv-backend/:/bcv-backend
+    ports:
+      - "8080:8080"
