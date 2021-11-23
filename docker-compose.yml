@@ -11,6 +11,8 @@ services:
       - '8080:8080'
     links:
       - db
+    depends_on:
+      - bcv-frontend
 
   bcv-frontend:
     container_name: bcv-frontend
@@ -18,10 +20,9 @@ services:
       context: ../bcv-frontend
     volumes:
       - ../bcv-frontend/:/bcv-frontend
+      - ../bcv-frontend/node_modules
     ports:
       - '3000:3000'
-    depends_on:
-      - bcv-backend
 
   db:
     container_name: bcv-db
