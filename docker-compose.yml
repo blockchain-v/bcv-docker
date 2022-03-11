@@ -8,11 +8,14 @@ services:
     volumes:
       - ../bcv-backend/:/bcv-backend
     ports:
-      - '8080:8080'
+      - '30000:30000'
     links:
       - db
     depends_on:
       - bcv-frontend
+    extra_hosts:
+      # - "host.docker.internal:192.168.0.186" INSERT OWN INTERNAL IP HERE
+      - "host.docker.internal:127.0.0.1"
 
   bcv-frontend:
     container_name: bcv-frontend
